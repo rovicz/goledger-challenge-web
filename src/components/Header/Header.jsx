@@ -1,20 +1,43 @@
 import React from "react";
 
 import { IoMdSearch } from "react-icons/io";
+import { FaRegUser } from "react-icons/fa";
 
 import {
   HeaderContainer,
+  MainOptionsBox,
+  MainOptionsItem,
   SearchMusicInput,
   SearchMusicInputBox,
+  SearchMusicInputContainer,
+  UserBox,
+  UserContainer,
+  UserName,
 } from "./styled";
 
 export default () => {
   return (
     <HeaderContainer>
-      <SearchMusicInputBox>
-        <IoMdSearch />
-        <SearchMusicInput placeholder="Search by artists, songs or albums" />
-      </SearchMusicInputBox>
+      <SearchMusicInputContainer>
+        <SearchMusicInputBox>
+          <IoMdSearch />
+          <SearchMusicInput placeholder="Search by artists, songs or albums" />
+        </SearchMusicInputBox>
+      </SearchMusicInputContainer>
+
+      <MainOptionsBox>
+        <MainOptionsItem>New Releases</MainOptionsItem>
+        <MainOptionsItem>News Feed</MainOptionsItem>
+        <MainOptionsItem>Shuffle Play</MainOptionsItem>
+      </MainOptionsBox>
+
+      <UserContainer>
+        <UserBox>
+          <FaRegUser />
+
+          <UserName>Victor Fernandes</UserName>
+        </UserBox>
+      </UserContainer>
     </HeaderContainer>
   );
 };
