@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Logo from "../../assets/goLedger-Logo.svg";
+import Logo from "../../assets/imgs/goLedger-Logo.svg";
 import { IoHomeOutline, IoMusicalNoteOutline } from "react-icons/io5";
 import { FaRegHeart, FaRegCalendarAlt } from "react-icons/fa";
 import { BiAlbum } from "react-icons/bi";
