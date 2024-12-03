@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { apiRoutes } from "./services/apiRoutes";
-import Header from "./components/Header";
+import Header from "./components/SideBarHeader/SideBarHeader";
+import Home from "./Home/Home";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,7 +19,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Home />
     </>
   );
 }
