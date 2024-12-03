@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const MusicMenuContainer = styled.div`
   display: flex;
-  width: 100%;
   height: 100%;
   padding: 20px;
   color: #fff;
