@@ -14,6 +14,7 @@ import {
   UserContainer,
   UserName,
 } from "./styled";
+import DropDownMenu from "./DropDownMenu/DropDownMenu";
 
 export default () => {
   return (
@@ -33,9 +34,11 @@ export default () => {
 
       <UserContainer>
         <UserBox>
-          <FaRegUser />
+          {/* <FaRegUser /> */}
 
           <UserName>Victor Fernandes</UserName>
+
+          <DropDownMenu />
         </UserBox>
       </UserContainer>
     </HeaderContainer>
