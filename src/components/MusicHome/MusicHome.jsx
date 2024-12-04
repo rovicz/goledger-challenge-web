@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   MusicMenuContainer,
   NewMusicMenuBannerBox,
@@ -20,6 +20,21 @@ import {
 import BackgroundImage from "../../assets/imgs/kendrick-image.png";
 
 export default () => {
+  const [isScrollInactive, setIsScrollInactive] = useState(false);
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    if (scrollRef && scrollRef.current) {
+      scrollRef.current.addEventListener("scroll", () => {
+        setIsScrollInactive(true);
+      });
+
+      scrollRef.current.addEventListener("scrollend", () => {
+        setIsScrollInactive(false);
+      });
+    }
+  }, [scrollRef]);
+
   return (
     <MusicMenuContainer>
       <NewMusicMenuSectionBox>
@@ -45,7 +60,7 @@ export default () => {
           </NewMusicMenuBannerBox>
         </NewMusicMenuBannerContainer>
 
-        <RecentAlbumsBox>
+        <RecentAlbumsBox ref={scrollRef} OnInactiveScroll={isScrollInactive}>
           <RecentAlbumsItem>
             <RecentAlbumsCoverImage src="https://i.scdn.co/image/ab67616d00001e02d9985092cd88bffd97653b58" />
 
@@ -76,46 +91,6 @@ export default () => {
           <RecentAlbumsItem>
             <RecentAlbumsCoverImage src="https://i.scdn.co/image/ab67616d00001e02d9985092cd88bffd97653b58" />
 
-            <RecentAlbumsDataBox>
-              <RecentAlbumsTitle>gnX</RecentAlbumsTitle>
-              <RecentAlbumsArtistName>Kendrick Lamar</RecentAlbumsArtistName>
-            </RecentAlbumsDataBox>
-          </RecentAlbumsItem>
-
-          <RecentAlbumsItem>
-            <RecentAlbumsCoverImage src="https://i.scdn.co/image/ab67616d00001e02d9985092cd88bffd97653b58" />
-            <RecentAlbumsDataBox>
-              <RecentAlbumsTitle>gnX</RecentAlbumsTitle>
-              <RecentAlbumsArtistName>Kendrick Lamar</RecentAlbumsArtistName>
-            </RecentAlbumsDataBox>
-          </RecentAlbumsItem>
-
-          <RecentAlbumsItem>
-            <RecentAlbumsCoverImage src="https://i.scdn.co/image/ab67616d00001e02d9985092cd88bffd97653b58" />
-            <RecentAlbumsDataBox>
-              <RecentAlbumsTitle>gnX</RecentAlbumsTitle>
-              <RecentAlbumsArtistName>Kendrick Lamar</RecentAlbumsArtistName>
-            </RecentAlbumsDataBox>
-          </RecentAlbumsItem>
-
-          <RecentAlbumsItem>
-            <RecentAlbumsCoverImage src="https://i.scdn.co/image/ab67616d00001e02d9985092cd88bffd97653b58" />
-            <RecentAlbumsDataBox>
-              <RecentAlbumsTitle>gnX</RecentAlbumsTitle>
-              <RecentAlbumsArtistName>Kendrick Lamar</RecentAlbumsArtistName>
-            </RecentAlbumsDataBox>
-          </RecentAlbumsItem>
-
-          <RecentAlbumsItem>
-            <RecentAlbumsCoverImage src="https://i.scdn.co/image/ab67616d00001e02d9985092cd88bffd97653b58" />
-            <RecentAlbumsDataBox>
-              <RecentAlbumsTitle>gnX</RecentAlbumsTitle>
-              <RecentAlbumsArtistName>Kendrick Lamar</RecentAlbumsArtistName>
-            </RecentAlbumsDataBox>
-          </RecentAlbumsItem>
-
-          <RecentAlbumsItem>
-            <RecentAlbumsCoverImage src="https://i.scdn.co/image/ab67616d00001e02d9985092cd88bffd97653b58" />
             <RecentAlbumsDataBox>
               <RecentAlbumsTitle>gnX</RecentAlbumsTitle>
               <RecentAlbumsArtistName>Kendrick Lamar</RecentAlbumsArtistName>

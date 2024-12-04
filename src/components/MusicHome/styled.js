@@ -89,8 +89,8 @@ export const RecentAlbumsBox = styled.div`
   gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
   margin-top: 15px;
-  height: 100%;
-  overflow-y: scroll;
+  max-height: calc(560px - 120px);
+  overflow-y: auto;
 
   &::-webkit-scrollbar {
     width: 5px;
@@ -103,6 +103,7 @@ export const RecentAlbumsBox = styled.div`
   &::-webkit-scrollbar-thumb {
     background: #ffffff80;
     border-radius: 20px;
+    display: ${(props) => (props.OnInactiveScroll ? "block" : "none")};
   }
 
   &::-webkit-scrollbar-thumb:hover {
@@ -113,8 +114,15 @@ export const RecentAlbumsBox = styled.div`
 export const RecentAlbumsItem = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
   gap: 0.5rem;
+  cursor: pointer;
+  transition: 0.35s;
+
+  &:hover {
+    background: #ffffff30;
+    border-radius: 4px;
+    padding: 7.5px;
+  }
 `;
 
 export const RecentAlbumsCoverImage = styled.img`

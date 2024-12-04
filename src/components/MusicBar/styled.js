@@ -38,8 +38,9 @@ export const ActualMusicPlayingSpacing = styled.div`
 export const ActualMusicPlayingBox = styled.div`
   display: flex;
   align-items: center;
-  width: 12%;
   gap: 0.5rem;
+  cursor: pointer;
+  max-width: 15%;
 `;
 
 export const ActualMusicPlayingImage = styled.img`
@@ -77,6 +78,7 @@ export const ActualMusicPlayingTimingBar = styled.progress`
   border: none;
   overflow: hidden;
   border-radius: 12px;
+  cursor: pointer;
   z-index: 1;
 
   &::-webkit-progress-bar {
@@ -111,6 +113,17 @@ export const ActualMusicPlayingOptionsVolumeBox = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
+  svg {
+    cursor: pointer;
+    padding: 3px;
+    transition: 0.3s;
+  }
+
+  svg:hover {
+    background: #ffffff30;
+    border-radius: 4px;
+  }
 `;
 
 export const ActualMusicPlayingMoreOptionsBox = styled.div`
