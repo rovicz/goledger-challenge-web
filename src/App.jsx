@@ -8,7 +8,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   const getData = async () => {
-    const res = await apiRoutes.getTx();
+    const res = await apiRoutes.getArtists();
 
     console.log(res);
   };

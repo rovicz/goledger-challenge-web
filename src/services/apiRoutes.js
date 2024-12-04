@@ -1,12 +1,22 @@
 import { api } from "../config/config";
 
 export const apiRoutes = {
-  getTx: async () => {
-    return api.get("/query/getTx", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
+  getArtists: async () => {
+    return api.post(
+      "/query/search",
+      {
+        query: {
+          selector: {
+            "@assetType": "artist",
+          },
+        },
       },
-    });
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      },
+    );
   },
 };
