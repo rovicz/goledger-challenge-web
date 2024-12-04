@@ -1,8 +1,12 @@
 import { useState } from "react";
 
 import Logo from "../../assets/imgs/goLedger-Logo.svg";
-import { IoHomeOutline, IoMusicalNoteOutline } from "react-icons/io5";
-import { FaRegHeart, FaRegCalendarAlt } from "react-icons/fa";
+import {
+  IoHomeOutline,
+  IoMusicalNoteOutline,
+  IoCalendarOutline,
+} from "react-icons/io5";
+import { FaRegHeart } from "react-icons/fa";
 import { BiAlbum } from "react-icons/bi";
 import { GoDot } from "react-icons/go";
 
@@ -53,7 +57,7 @@ export default () => {
           </BrowseMusicMenuItem>
 
           <BrowseMusicMenuItem>
-            <FaRegCalendarAlt style={{ width: 20, height: 20 }} />
+            <IoCalendarOutline style={{ width: 20, height: 20 }} />
             History
           </BrowseMusicMenuItem>
         </BrowseMusicMenuList>

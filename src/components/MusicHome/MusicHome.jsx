@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+import { BiAlbum } from "react-icons/bi";
+
 import BackgroundImage from "../../assets/imgs/kendrick-image.png";
 import { apiRoutes } from "../../services/apiRoutes";
 
@@ -18,6 +20,7 @@ import {
   RecentAlbumsCoverImage,
   RecentAlbumsDataBox,
   RecentAlbumsItem,
+  RecentAlbumsSectionTitle,
   RecentAlbumsTitle,
 } from "./styled";
 
@@ -50,12 +53,6 @@ export default () => {
   useEffect(() => {
     getAllAlbums();
   }, []);
-
-  const getArtistName = async (artist_key) => {
-    const resArtistName = await apiRoutes.getArtist(artist_key);
-
-    console.log(resArtistName);
-  };
 
   useEffect(() => {
     if (scrollRef && scrollRef.current) {
@@ -94,13 +91,17 @@ export default () => {
           </NewMusicMenuBannerBox>
         </NewMusicMenuBannerContainer>
 
+        <RecentAlbumsSectionTitle>Recent Albums</RecentAlbumsSectionTitle>
+
         <RecentAlbumsBox ref={scrollRef} OnInactiveScroll={isScrollInactive}>
           {albums.map((item) => (
             <RecentAlbumsItem
               key={item["@key"]}
               onClick={() => console.log(item)}
             >
-              <RecentAlbumsCoverImage src="https://i.scdn.co/image/ab67616d00001e02d9985092cd88bffd97653b58" />
+              <RecentAlbumsCoverImage className="albumCover">
+                <BiAlbum style={{ width: 80, height: 80, color: "#000" }} />
+              </RecentAlbumsCoverImage>
 
               <RecentAlbumsDataBox>
                 <RecentAlbumsTitle

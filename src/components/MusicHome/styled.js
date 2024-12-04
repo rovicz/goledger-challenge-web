@@ -17,7 +17,7 @@ export const NewMusicMenuSectionBox = styled.div`
 export const NewMusicMenuBannerContainer = styled.div`
   display: flex;
   width: 100%;
-  height: 400px;
+  height: 40%;
   border-radius: 10px;
   background: #fff;
   flex-direction: column;
@@ -83,13 +83,21 @@ export const NewMusicMenuBannerKnowMoreButton = styled.button`
   }
 `;
 
+export const RecentAlbumsSectionTitle = styled.h1`
+  font-size: 1.25rem;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 15px;
+  text-transform: uppercase;
+`;
+
 export const RecentAlbumsBox = styled.div`
   display: grid;
   width: 100%;
   gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
-  margin-top: 15px;
-  max-height: calc(560px - 120px);
+  margin-top: 10px;
+  height: calc(50% - 160px);
   overflow-y: auto;
 
   &::-webkit-scrollbar {
@@ -116,18 +124,28 @@ export const RecentAlbumsItem = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   cursor: pointer;
-  transition: 0.35s;
+  transition: 0.3s;
+  padding: 7.5px;
 
   &:hover {
     background: #ffffff30;
     border-radius: 4px;
-    padding: 7.5px;
+  }
+
+  .albumCover:hover {
+    height: 195px;
+    transition: 0.5s;
   }
 `;
 
-export const RecentAlbumsCoverImage = styled.img`
+export const RecentAlbumsCoverImage = styled.div`
   border-radius: 10px;
   width: 100%;
+  height: 200px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const RecentAlbumsDataBox = styled.div`
