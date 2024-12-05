@@ -122,6 +122,7 @@ export const ActualMusicPlayingOptionsVolumeBox = styled.div`
 
   svg:hover {
     background: #ffffff30;
+    color: #ffffff !important;
     border-radius: 4px;
   }
 `;
@@ -140,6 +141,7 @@ export const ActualMusicPlayingMoreOptionsBox = styled.div`
 
   svg:hover {
     background: #ffffff30;
+    color: #ffffff !important;
     border-radius: 4px;
   }
 `;
@@ -158,6 +160,7 @@ export const SkipForwardBackWardAndPlayBox = styled.div`
 
   .skipButton:hover {
     background: #ffffff30;
+    color: #ffffff !important;
     border-radius: 4px;
   }
 
