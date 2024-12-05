@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 
 import { BiAlbum } from "react-icons/bi";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 import BackgroundImage from "../../assets/imgs/kendrick-image.png";
 import { apiRoutes } from "../../services/apiRoutes";
 
 import {
   MusicMenuContainer,
+  MerchandiseSectionTitle,
+  NewArtistsAndMoreSectionBox,
   NewMusicMenuBannerBox,
   NewMusicMenuBannerContainer,
   NewMusicMenuBannerDataBox,
@@ -22,6 +25,16 @@ import {
   RecentAlbumsItem,
   RecentAlbumsSectionTitle,
   RecentAlbumsTitle,
+  MerchandiseBox,
+  MerchandiseImage,
+  MerchandiseContainer,
+  MerchandiseImageBox,
+  MerchandiseImageSpan,
+  MerchandiseTitle,
+  MerchandiseSubTitle,
+  MerchandiseDataBox,
+  MerchandiseGoVisitArrowBox,
+  MerchandiseArea,
 } from "./styled";
 
 export default () => {
@@ -117,6 +130,31 @@ export default () => {
           ))}
         </RecentAlbumsBox>
       </NewMusicMenuSectionBox>
+
+      <NewArtistsAndMoreSectionBox>
+        <MerchandiseContainer>
+          <MerchandiseSectionTitle>Merchandise</MerchandiseSectionTitle>
+
+          <MerchandiseBox>
+            <MerchandiseArea>
+              <MerchandiseImageBox>
+                <MerchandiseImageSpan>New</MerchandiseImageSpan>
+                <MerchandiseImage src="https://universalmusic.vtexassets.com/arquivos/ids/189080-800-800?v=638681556258030000&width=800&height=800&aspect=true" />
+              </MerchandiseImageBox>
+
+              <MerchandiseDataBox>
+                <MerchandiseTitle>GNX Album Merchandise</MerchandiseTitle>
+                <MerchandiseSubTitle>
+                  LP's, T-shirts, Hoodies & more.
+                </MerchandiseSubTitle>
+              </MerchandiseDataBox>
+            </MerchandiseArea>
+            <MerchandiseGoVisitArrowBox>
+              <MdKeyboardArrowRight />
+            </MerchandiseGoVisitArrowBox>
+          </MerchandiseBox>
+        </MerchandiseContainer>
+      </NewArtistsAndMoreSectionBox>
     </MusicMenuContainer>
   );
 };

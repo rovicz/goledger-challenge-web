@@ -5,6 +5,7 @@ export const MusicMenuContainer = styled.div`
   height: 100%;
   max-height: 100%;
   padding: 20px;
+  gap: 1rem;
   color: #fff;
 `;
 
@@ -165,4 +166,91 @@ export const RecentAlbumsArtistName = styled.h3`
   font-size: 0.7rem;
   color: #fff;
   text-align: left;
+`;
+
+export const NewArtistsAndMoreSectionBox = styled.div`
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const MerchandiseContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+`;
+
+export const MerchandiseSectionTitle = styled.h1`
+  font-size: 1.25rem;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+`;
+
+export const MerchandiseBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  gap: 1rem;
+  border-radius: 10px;
+  padding: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background: #ffffff20;
+  }
+`;
+
+export const MerchandiseImageBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+`;
+
+export const MerchandiseImageSpan = styled.span`
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+`;
+
+export const MerchandiseImage = styled.img`
+  display: flex;
+  width: 80px;
+  border-radius: 10px;
+`;
+
+export const MerchandiseDataBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const MerchandiseTitle = styled.h3`
+  font-size: 0.9rem;
+  font-weight: 600;
+`;
+
+export const MerchandiseSubTitle = styled.p`
+  font-size: 0.7rem;
+`;
+
+export const MerchandiseArea = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+export const MerchandiseGoVisitArrowBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    cursor: pointer;
+    padding: 3px;
+    transition: 0.3s;
+    width: 30px;
+    height: 30px;
+  }
 `;
