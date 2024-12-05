@@ -135,7 +135,14 @@ export default () => {
         <MerchandiseContainer>
           <MerchandiseSectionTitle>Merchandise</MerchandiseSectionTitle>
 
-          <MerchandiseBox>
+          <MerchandiseBox
+            onClick={() =>
+              window.open(
+                "https://www.umusicstore.com/kendrick-lamar",
+                "_blank",
+              )
+            }
+          >
             <MerchandiseArea>
               <MerchandiseImageBox>
                 <MerchandiseImageSpan>New</MerchandiseImageSpan>
