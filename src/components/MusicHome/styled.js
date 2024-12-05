@@ -172,6 +172,7 @@ export const NewArtistsAndMoreSectionBox = styled.div`
   width: 40%;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 `;
 
 export const MerchandiseContainer = styled.div`
@@ -212,13 +213,31 @@ export const MerchandiseImageBox = styled.div`
 export const MerchandiseImageSpan = styled.span`
   font-size: 0.8rem;
   text-transform: uppercase;
+  text-align: center;
   font-weight: 600;
+  width: 30px;
 `;
 
 export const MerchandiseImage = styled.img`
   display: flex;
   width: 80px;
   border-radius: 10px;
+`;
+
+export const MerchandiseOtherArtistsImage = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  border-radius: 10px;
+  background: #fff;
+  height: 100%;
+
+  svg {
+    color: #000;
+    height: 35px;
+    width: 35px;
+  }
 `;
 
 export const MerchandiseDataBox = styled.div`
@@ -252,5 +271,81 @@ export const MerchandiseGoVisitArrowBox = styled.div`
     transition: 0.3s;
     width: 30px;
     height: 30px;
+  }
+`;
+
+export const ArtistsSpacingBox = styled.div`
+  display: grid;
+  width: 100%;
+  gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+  margin-top: 10px;
+  height: calc(25% - 160px);
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ffffff80;
+    border-radius: 20px;
+    display: ${(props) => (props.OnInactiveScroll ? "block" : "none")};
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #00aaff;
+  }
+`;
+
+export const ArtistsSectionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+export const ArtistsItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  border-radius: 10px;
+`;
+
+export const ArtistsSectionTitle = styled.h1`
+  font-size: 1.25rem;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+`;
+
+export const ArtistsImageBox = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;
+
+export const ArtistsImageSpan = styled.span`
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+`;
+
+export const ArtistsImage = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  border-radius: 10px;
+  background: #fff;
+  height: 100%;
+
+  svg {
+    color: #000;
+    height: 35px;
+    width: 35px;
   }
 `;

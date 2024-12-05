@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { BiAlbum } from "react-icons/bi";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { IoPersonOutline } from "react-icons/io5";
 
 import BackgroundImage from "../../assets/imgs/kendrick-image.png";
 import { apiRoutes } from "../../services/apiRoutes";
@@ -35,17 +36,25 @@ import {
   MerchandiseDataBox,
   MerchandiseGoVisitArrowBox,
   MerchandiseArea,
+  MerchandiseOtherArtistsImage,
+  ArtistsSectionContainer,
+  ArtistsSectionTitle,
+  ArtistsImageBox,
+  ArtistsImageSpan,
+  ArtistsItem,
+  ArtistsImage,
+  ArtistsSpacingBox,
 } from "./styled";
 
 export default () => {
   const [isScrollInactive, setIsScrollInactive] = useState(false);
   const [albums, setAlbums] = useState([]);
-  const scrollRef = useRef(null);
+  const [artists, setArtists] = useState([]);
+  const recentAlbumsRef = useRef(null);
+  const artistsRef = useRef(null);
 
   const getAllAlbums = async () => {
     const resAlbums = await apiRoutes.getAllAlbums();
-
-    console.log(resAlbums.data.result);
     const allAlbums = resAlbums.data.result;
 
     allAlbums.map(async (item) => {
@@ -63,21 +72,39 @@ export default () => {
     });
   };
 
+  const getAllArtists = async () => {
+    const resArtists = await apiRoutes.getAllArtists();
+    const allArtists = resArtists.data.result;
+
+    setArtists(allArtists);
+  };
+
   useEffect(() => {
     getAllAlbums();
+    getAllArtists();
   }, []);
 
   useEffect(() => {
-    if (scrollRef && scrollRef.current) {
-      scrollRef.current.addEventListener("scroll", () => {
+    if (recentAlbumsRef && recentAlbumsRef.current) {
+      recentAlbumsRef.current.addEventListener("scroll", () => {
         setIsScrollInactive(true);
       });
 
-      scrollRef.current.addEventListener("scrollend", () => {
+      recentAlbumsRef.current.addEventListener("scrollend", () => {
         setIsScrollInactive(false);
       });
     }
-  }, [scrollRef]);
+
+    if (artistsRef && artistsRef.current) {
+      artistsRef.current.addEventListener("scroll", () => {
+        setIsScrollInactive(true);
+      });
+
+      artistsRef.current.addEventListener("scrollend", () => {
+        setIsScrollInactive(false);
+      });
+    }
+  }, [recentAlbumsRef, artistsRef]);
 
   return (
     <MusicMenuContainer>
@@ -106,7 +133,10 @@ export default () => {
 
         <RecentAlbumsSectionTitle>Recent Albums</RecentAlbumsSectionTitle>
 
-        <RecentAlbumsBox ref={scrollRef} OnInactiveScroll={isScrollInactive}>
+        <RecentAlbumsBox
+          ref={recentAlbumsRef}
+          OnInactiveScroll={isScrollInactive}
+        >
           {albums.map((item) => (
             <RecentAlbumsItem
               key={item["@key"]}
@@ -160,7 +190,62 @@ export default () => {
               <MdKeyboardArrowRight />
             </MerchandiseGoVisitArrowBox>
           </MerchandiseBox>
+
+          <MerchandiseBox
+            onClick={() =>
+              window.open("https://www.umusicstore.com/artistas", "_blank")
+            }
+          >
+            <MerchandiseArea>
+              <MerchandiseImageBox>
+                <MerchandiseImageSpan>New</MerchandiseImageSpan>
+                <MerchandiseOtherArtistsImage>
+                  <IoPersonOutline />
+                </MerchandiseOtherArtistsImage>
+              </MerchandiseImageBox>
+
+              <MerchandiseDataBox>
+                <MerchandiseTitle>Other Artirts Merchandise</MerchandiseTitle>
+                <MerchandiseSubTitle>
+                  LP's, T-shirts, Hoodies & more.
+                </MerchandiseSubTitle>
+              </MerchandiseDataBox>
+            </MerchandiseArea>
+            <MerchandiseGoVisitArrowBox>
+              <MdKeyboardArrowRight />
+            </MerchandiseGoVisitArrowBox>
+          </MerchandiseBox>
         </MerchandiseContainer>
+
+        <ArtistsSectionContainer>
+          <ArtistsSectionTitle>Artists</ArtistsSectionTitle>
+
+          <ArtistsSpacingBox
+            ref={artistsRef}
+            OnInactiveScroll={isScrollInactive}
+          >
+            {artists.map((item, index) => (
+              <MerchandiseBox>
+                <MerchandiseArea>
+                  <MerchandiseImageBox>
+                    <MerchandiseImageSpan>{index + 1}</MerchandiseImageSpan>
+                    <MerchandiseOtherArtistsImage>
+                      <IoPersonOutline />
+                    </MerchandiseOtherArtistsImage>
+                  </MerchandiseImageBox>
+
+                  <MerchandiseDataBox>
+                    <MerchandiseTitle>{item?.name}</MerchandiseTitle>
+                    <MerchandiseSubTitle>{item?.country}</MerchandiseSubTitle>
+                  </MerchandiseDataBox>
+                </MerchandiseArea>
+                <MerchandiseGoVisitArrowBox>
+                  <MdKeyboardArrowRight />
+                </MerchandiseGoVisitArrowBox>
+              </MerchandiseBox>
+            ))}
+          </ArtistsSpacingBox>
+        </ArtistsSectionContainer>
       </NewArtistsAndMoreSectionBox>
     </MusicMenuContainer>
   );
