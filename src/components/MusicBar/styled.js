@@ -65,9 +65,9 @@ export const ActualMusicPlayingArtistName = styled.p`
 
 export const ActualMusicPlayingTimingBox = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.3rem;
   width: 40%;
 `;
 
@@ -142,4 +142,33 @@ export const ActualMusicPlayingMoreOptionsBox = styled.div`
     background: #ffffff30;
     border-radius: 4px;
   }
+`;
+
+export const SkipForwardBackWardAndPlayBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  .skipButton {
+    cursor: pointer;
+    padding: 3px;
+    transition: 0.3s;
+  }
+
+  .skipButton:hover {
+    background: #ffffff30;
+    border-radius: 4px;
+  }
+
+  svg {
+    cursor: pointer;
+  }
+`;
+
+export const ProgressBarAndTimingBox = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.3rem;
 `;

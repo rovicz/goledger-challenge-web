@@ -4,6 +4,11 @@ import { HiOutlineVolumeUp } from "react-icons/hi";
 import { VscDebugRestart } from "react-icons/vsc";
 import { TiArrowShuffle } from "react-icons/ti";
 import { MdFullscreen } from "react-icons/md";
+import {
+  IoIosSkipBackward,
+  IoIosSkipForward,
+  IoIosPlayCircle,
+} from "react-icons/io";
 
 import {
   ActualMusicPlayingArtistName,
@@ -22,6 +27,8 @@ import {
   MenuBarSpacing,
   MusicBarBox,
   MusicBarContainer,
+  ProgressBarAndTimingBox,
+  SkipForwardBackWardAndPlayBox,
 } from "./styled";
 
 export default () => {
@@ -43,10 +50,26 @@ export default () => {
           </ActualMusicPlayingBox>
 
           <ActualMusicPlayingTimingBox>
-            <ActualMusicPlayingTime>00:00</ActualMusicPlayingTime>
-            <ActualMusicPlayingTimingBar />
+            <SkipForwardBackWardAndPlayBox>
+              <IoIosSkipBackward
+                style={{ width: 20, height: 20, color: "#ffffff30" }}
+                className="skipButton"
+              />{" "}
+              <IoIosPlayCircle
+                style={{ width: 40, height: 40, color: "#ffffff" }}
+              />{" "}
+              <IoIosSkipForward
+                style={{ width: 20, height: 20, color: "#ffffff30" }}
+                className="skipButton"
+              />
+            </SkipForwardBackWardAndPlayBox>
 
-            <ActualMusicPlayingTime>03:20</ActualMusicPlayingTime>
+            <ProgressBarAndTimingBox>
+              <ActualMusicPlayingTime>00:00</ActualMusicPlayingTime>
+              <ActualMusicPlayingTimingBar />
+
+              <ActualMusicPlayingTime>03:20</ActualMusicPlayingTime>
+            </ProgressBarAndTimingBox>
           </ActualMusicPlayingTimingBox>
 
           <ActualMusicPlayingOptionsContainer>
