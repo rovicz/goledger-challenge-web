@@ -98,7 +98,7 @@ export const RecentAlbumsBox = styled.div`
   gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
   margin-top: 10px;
-  height: calc(50% - 160px);
+  height: calc(50% - 135px);
   overflow-y: auto;
 
   &::-webkit-scrollbar {
