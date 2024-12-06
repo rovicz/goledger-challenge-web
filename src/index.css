@@ -9,6 +9,10 @@ body {
   font-family: Poppins;
   margin: 0;
   padding: 0;
+
+  @media (max-width: 550px) {
+    overflow: auto;
+  }
 }
 
 h1,

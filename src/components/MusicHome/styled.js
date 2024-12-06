@@ -6,6 +6,10 @@ export const MusicMenuContainer = styled.div`
   padding: 20px;
   gap: 1rem;
   color: #fff;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
 `;
 
 export const NewMusicMenuSectionBox = styled.div`
@@ -15,6 +19,10 @@ export const NewMusicMenuSectionBox = styled.div`
 
   @media (max-height: 768px) {
     width: 70%;
+  }
+
+  @media (max-width: 550px) {
+    width: 100%;
   }
 `;
 
@@ -196,6 +204,10 @@ export const NewArtistsAndMoreSectionBox = styled.div`
 
   @media (max-height: 768px) {
     width: 30%;
+  }
+
+  @media (max-width: 550px) {
+    width: 100%;
   }
 `;
 

@@ -12,6 +12,10 @@ export const SearchMusicInputContainer = styled.div`
   position: relative;
   width: 20%;
   max-width: 560px;
+
+  @media (max-width: 550px) {
+    width: 100%;
+  }
 `;
 
 export const SearchMusicInputBox = styled.div`
@@ -48,6 +52,10 @@ export const SearchMusicInput = styled.input`
 export const MainOptionsBox = styled.div`
   display: flex;
   gap: 0.8rem;
+
+  @media (max-width: 550px) {
+    display: none;
+  }
 `;
 
 export const MainOptionsItem = styled.a`
@@ -69,6 +77,10 @@ export const MainOptionsItem = styled.a`
 
 export const UserContainer = styled.div`
   display: flex;
+
+  @media (max-width: 550px) {
+    display: none;
+  }
 `;
 
 export const UserBox = styled.div`

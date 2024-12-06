@@ -8,6 +8,10 @@ export const MusicBarContainer = styled.footer`
   height: 80px;
   display: flex;
   align-items: center;
+
+  @media (max-width: 550px) {
+    position: fixed;
+  }
 `;
 
 export const MusicBarBox = styled.div`

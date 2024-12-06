@@ -7,6 +7,10 @@ export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 0 10px 10px 0;
+
+  @media (max-width: 550px) {
+    display: none;
+  }
 `;
 
 export const LogoBox = styled.div`
