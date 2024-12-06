@@ -47,7 +47,10 @@ import {
 } from "./styled";
 
 export default () => {
-  const [isScrollInactive, setIsScrollInactive] = useState(false);
+  const [isScrollInactive, setIsScrollInactive] = useState({
+    albums: false,
+    artists: false,
+  });
   const [albums, setAlbums] = useState([]);
   const [artists, setArtists] = useState([]);
   const recentAlbumsRef = useRef(null);
@@ -87,21 +90,29 @@ export default () => {
   useEffect(() => {
     if (recentAlbumsRef && recentAlbumsRef.current) {
       recentAlbumsRef.current.addEventListener("scroll", () => {
-        setIsScrollInactive(true);
+        setIsScrollInactive({
+          albums: true,
+        });
       });
 
       recentAlbumsRef.current.addEventListener("scrollend", () => {
-        setIsScrollInactive(false);
+        setIsScrollInactive({
+          albums: false,
+        });
       });
     }
 
     if (artistsRef && artistsRef.current) {
       artistsRef.current.addEventListener("scroll", () => {
-        setIsScrollInactive(true);
+        setIsScrollInactive({
+          artists: true,
+        });
       });
 
       artistsRef.current.addEventListener("scrollend", () => {
-        setIsScrollInactive(false);
+        setIsScrollInactive({
+          artists: false,
+        });
       });
     }
   }, [recentAlbumsRef, artistsRef]);
@@ -135,7 +146,7 @@ export default () => {
 
         <RecentAlbumsBox
           ref={recentAlbumsRef}
-          OnInactiveScroll={isScrollInactive}
+          OnInactiveScroll={isScrollInactive.albums}
         >
           {albums.map((item) => (
             <RecentAlbumsItem
@@ -222,7 +233,7 @@ export default () => {
 
           <ArtistsSpacingBox
             ref={artistsRef}
-            OnInactiveScroll={isScrollInactive}
+            OnInactiveScroll={isScrollInactive.artists}
           >
             {artists.map((item, index) => (
               <MerchandiseBox>

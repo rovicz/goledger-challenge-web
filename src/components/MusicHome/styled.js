@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const MusicMenuContainer = styled.div`
   display: flex;
-  height: 100%;
-  max-height: 100%;
+  max-height: calc(95vh - 80px);
   padding: 20px;
   gap: 1rem;
   color: #fff;
@@ -13,6 +12,10 @@ export const NewMusicMenuSectionBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 60%;
+
+  @media (max-height: 768px) {
+    width: 70%;
+  }
 `;
 
 export const NewMusicMenuBannerContainer = styled.div`
@@ -23,6 +26,10 @@ export const NewMusicMenuBannerContainer = styled.div`
   background: #fff;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-height: 768px) {
+    height: auto;
+  }
 `;
 
 export const NewMusicMenuBannerBox = styled.div`
@@ -34,6 +41,10 @@ export const NewMusicMenuBannerBox = styled.div`
   background-image: url(${(props) => props.BackgroundImage});
   background-repeat: no-repeat;
   background-position: right;
+
+  @media (max-height: 768px) {
+    background-size: 420px;
+  }
 `;
 
 export const NewMusicMenuBannerTypeTitle = styled.h3`
@@ -98,8 +109,13 @@ export const RecentAlbumsBox = styled.div`
   gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
   margin-top: 10px;
-  height: calc(50% - 135px);
+  height: calc(50% - 20px);
   overflow-y: auto;
+
+  @media (max-height: 768px) {
+    height: 35%;
+    gap: 0.3rem;
+  }
 
   &::-webkit-scrollbar {
     width: 5px;
@@ -147,6 +163,10 @@ export const RecentAlbumsCoverImage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-height: 768px) {
+    height: 140px;
+  }
 `;
 
 export const RecentAlbumsDataBox = styled.div`
@@ -173,6 +193,10 @@ export const NewArtistsAndMoreSectionBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media (max-height: 768px) {
+    width: 30%;
+  }
 `;
 
 export const MerchandiseContainer = styled.div`
@@ -180,6 +204,11 @@ export const MerchandiseContainer = styled.div`
   flex-direction: column;
   width: 100%;
   gap: 0.5rem;
+  height: 30%;
+
+  @media (max-height: 768px) {
+    height: auto;
+  }
 `;
 
 export const MerchandiseSectionTitle = styled.h1`
@@ -280,8 +309,12 @@ export const ArtistsSpacingBox = styled.div`
   gap: 1rem;
   grid-template-columns: repeat(1, 1fr);
   margin-top: 10px;
-  height: calc(25% - 160px);
+  height: 42%;
   overflow-y: auto;
+
+  @media (max-height: 768px) {
+    height: 20%;
+  }
 
   &::-webkit-scrollbar {
     width: 5px;

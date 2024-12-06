@@ -1,13 +1,14 @@
-body,
 html {
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  font-family: Poppins;
+  min-height: 100%;
 }
 
-:root {
+body {
+  min-height: calc(100% - 8px * 2); /* minus top & bottom margins*/
+  overflow: hidden;
   background-color: #0a0a0a;
+  font-family: Poppins;
+  margin: 0;
+  padding: 0;
 }
 
 h1,
