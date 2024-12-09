@@ -136,7 +136,9 @@ export default () => {
               </NewMusicMenuBannerSubTitle>
             </NewMusicMenuBannerDataBox>
 
-            <NewMusicMenuBannerKnowMoreButton>
+            <NewMusicMenuBannerKnowMoreButton
+              onClick={() => window.startMusic()}
+            >
               Listen Now
             </NewMusicMenuBannerKnowMoreButton>
           </NewMusicMenuBannerBox>

@@ -117,6 +117,10 @@ export default () => {
     }
   };
 
+  window.startMusic = function () {
+    audioRef.current.play();
+  };
+
   return (
     <MusicBarContainer>
       <MusicBarBox>
