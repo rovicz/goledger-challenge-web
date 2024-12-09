@@ -35,7 +35,7 @@ export const MenuBarSpacing = styled.div`
 export const ActualMusicPlayingSpacing = styled.div`
   display: flex;
   width: 100%;
-  padding: 0 30px;
+  padding: 0 15px;
   justify-content: space-between;
 `;
 
@@ -45,6 +45,10 @@ export const ActualMusicPlayingBox = styled.div`
   gap: 0.5rem;
   cursor: pointer;
   max-width: 15%;
+
+  @media (max-width: 550px) {
+    max-width: 50%;
+  }
 `;
 
 export const ActualMusicPlayingImage = styled.img`
@@ -73,6 +77,10 @@ export const ActualMusicPlayingTimingBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 40%;
+
+  @media (max-width: 550px) {
+    width: 50%;
+  }
 `;
 
 export const ActualMusicPlayingTimingBar = styled.progress`
@@ -110,6 +118,10 @@ export const ActualMusicPlayingOptionsContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 0.5rem;
+
+  @media (max-width: 550px) {
+    display: none;
+  }
 `;
 
 export const ActualMusicPlayingOptionsVolumeBox = styled.div`
@@ -170,6 +182,10 @@ export const SkipForwardBackWardAndPlayBox = styled.div`
 
   svg {
     cursor: pointer;
+  }
+
+  @media (max-width: 550px) {
+    display: none;
   }
 `;
 
