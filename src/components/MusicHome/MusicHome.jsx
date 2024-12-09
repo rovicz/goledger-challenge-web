@@ -160,20 +160,13 @@ export default () => {
               OnInactiveScroll={isScrollInactive.albums}
             >
               {albums.map((item) => (
-                <RecentAlbumsItem
-                  key={item["@key"]}
-                  onClick={() => console.log(item)}
-                >
+                <RecentAlbumsItem key={item["@key"]}>
                   <RecentAlbumsCoverImage className="albumCover">
                     <BiAlbum style={{ width: 80, height: 80, color: "#000" }} />
                   </RecentAlbumsCoverImage>
 
                   <RecentAlbumsDataBox>
-                    <RecentAlbumsTitle
-                      onClick={() => console.log(item.artist.artistName)}
-                    >
-                      {item?.name}
-                    </RecentAlbumsTitle>
+                    <RecentAlbumsTitle>{item?.name}</RecentAlbumsTitle>
                     <RecentAlbumsArtistName>
                       {item.artist?.artistName}
                     </RecentAlbumsArtistName>

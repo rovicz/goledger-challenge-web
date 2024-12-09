@@ -35,7 +35,6 @@ export default () => {
       const playlists = resPlaylists.data.result;
       setPlaylists(playlists);
       setIsLoaded(true);
-      console.log(resPlaylists.data.result);
     }
   };
 
