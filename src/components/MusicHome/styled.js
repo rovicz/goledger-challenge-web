@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MusicMenuContainer = styled.div`
   display: flex;
-  max-height: calc(95vh - 80px);
+  height: calc(95vh - 80px);
   padding: 20px;
   gap: 1rem;
   color: #fff;
@@ -429,4 +429,11 @@ export const ArtistsImage = styled.div`
     height: 35px;
     width: 35px;
   }
+`;
+
+export const Loading = styled.img`
+  width: 200px;
+  margin: 0 auto;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%)
+    hue-rotate(223deg) brightness(103%) contrast(103%);
 `;
