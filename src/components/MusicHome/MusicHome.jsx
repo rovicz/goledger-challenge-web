@@ -49,7 +49,7 @@ import {
 } from "./styled";
 
 export default () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [isScrollInactive, setIsScrollInactive] = useState({
     albums: false,
     artists: false,
@@ -60,7 +60,6 @@ export default () => {
   const artistsRef = useRef(null);
 
   const getAllAlbums = async () => {
-    setIsLoading(true);
     const resAlbums = await apiRoutes.getAllAlbums();
     const allAlbums = resAlbums.data.result;
 
@@ -74,7 +73,7 @@ export default () => {
 
         setTimeout(() => {
           setAlbums(allAlbums);
-          setIsLoading(false);
+          setIsLoaded(true);
         }, 500);
       }
     });
@@ -126,8 +125,8 @@ export default () => {
 
   return (
     <MusicMenuContainer>
-      {isLoading && <Loading src={loading} />}
-      {!isLoading && (
+      {!isLoaded && <Loading src={loading} />}
+      {isLoaded && (
         <>
           <NewMusicMenuSectionBox>
             <NewMusicMenuBannerContainer>
