@@ -20,6 +20,7 @@ export const SearchMusicInputContainer = styled.div`
 
 export const SearchMusicInputBox = styled.div`
   position: relative;
+  display: flex;
   width: 100%;
 
   svg {

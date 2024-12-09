@@ -9,6 +9,7 @@ export const MusicMenuContainer = styled.div`
 
   @media (max-width: 550px) {
     flex-direction: column;
+    padding-top: 0;
   }
 `;
 
@@ -53,6 +54,12 @@ export const NewMusicMenuBannerBox = styled.div`
   @media (max-height: 768px) {
     background-size: 420px;
   }
+
+  @media (max-width: 550px) {
+    gap: 3rem;
+    background-size: 240px;
+    background-position: bottom right;
+  }
 `;
 
 export const NewMusicMenuBannerTypeTitle = styled.h3`
@@ -67,6 +74,10 @@ export const NewMusicMenuBannerDataBox = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 45%;
+
+  @media (max-width: 550px) {
+    width: 100%;
+  }
 `;
 
 export const NewMusicMenuBannerTitle = styled.h1`
@@ -120,11 +131,6 @@ export const RecentAlbumsBox = styled.div`
   height: calc(50% - 20px);
   overflow-y: auto;
 
-  @media (max-height: 768px) {
-    height: 35%;
-    gap: 0.3rem;
-  }
-
   &::-webkit-scrollbar {
     width: 5px;
   }
@@ -141,6 +147,16 @@ export const RecentAlbumsBox = styled.div`
 
   &::-webkit-scrollbar-thumb:hover {
     background: #00aaff;
+  }
+
+  @media (max-height: 768px) {
+    height: 35%;
+    gap: 0.3rem;
+  }
+
+  @media (max-width: 550px) {
+    grid-template-columns: repeat(2, 1fr);
+    height: 420px;
   }
 `;
 
@@ -160,6 +176,12 @@ export const RecentAlbumsItem = styled.div`
   .albumCover:hover {
     height: 195px;
     transition: 0.5s;
+  }
+
+  @media (max-width: 550px) {
+    .albumCover:hover {
+      height: 140px !important;
+    }
   }
 `;
 
@@ -324,10 +346,6 @@ export const ArtistsSpacingBox = styled.div`
   height: 42%;
   overflow-y: auto;
 
-  @media (max-height: 768px) {
-    height: 20%;
-  }
-
   &::-webkit-scrollbar {
     width: 5px;
   }
@@ -345,12 +363,24 @@ export const ArtistsSpacingBox = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: #00aaff;
   }
+
+  @media (max-height: 768px) {
+    height: 20%;
+  }
+
+  @media (max-width: 550px) {
+    height: 420px;
+  }
 `;
 
 export const ArtistsSectionContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media (max-width: 550px) {
+    margin-bottom: 90px;
+  }
 `;
 
 export const ArtistsItem = styled.div`
