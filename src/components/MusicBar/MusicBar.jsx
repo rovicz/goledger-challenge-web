@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { HiOutlineVolumeUp } from "react-icons/hi";
+import luther from "../../assets/audio/luther.gnx.mp3";
+
 import { VscDebugRestart } from "react-icons/vsc";
 import { TiArrowShuffle } from "react-icons/ti";
 import { MdFullscreen } from "react-icons/md";
+import { IoPauseCircle } from "react-icons/io5";
+import { HiOutlineVolumeUp, HiOutlineVolumeOff } from "react-icons/hi";
 import {
   IoIosSkipBackward,
   IoIosSkipForward,
@@ -24,14 +27,96 @@ import {
   ActualMusicPlayingTimerInitialAndFinalBox,
   ActualMusicPlayingTimingBar,
   ActualMusicPlayingTimingBox,
+  Audio,
   MenuBarSpacing,
   MusicBarBox,
   MusicBarContainer,
   ProgressBarAndTimingBox,
   SkipForwardBackWardAndPlayBox,
 } from "./styled";
+import { audioHelper } from "./helper/helper";
 
 export default () => {
+  const [isPaused, setIsPaused] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
+  const [durationFormated, setDurationFormated] = useState("");
+  const [currentTimeFormated, setCurrentTimeFormated] = useState("");
+  const [audioRawData, setAudioRawData] = useState({
+    currentTime: 0,
+    duration: 0,
+  });
+  const progressBarRef = useRef();
+  const audioRef = useRef();
+  const volumeRef = useRef();
+
+  const handleProgress = () => {
+    if (audioRef && audioRef.current) {
+      setDurationFormated(audioHelper.formatTime(audioRef.current.duration));
+      setCurrentTimeFormated(
+        audioHelper.formatTime(audioRef.current.currentTime),
+      );
+
+      setAudioRawData({
+        currentTime: audioRef.current.currentTime,
+        duration: audioRef.current.duration,
+        volume: 1.0,
+      });
+    }
+  };
+
+  const handlePlayPause = () => {
+    if (audioRef && audioRef.current) {
+      const audioPlayer = audioRef.current;
+
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+        setIsPaused(false);
+      } else {
+        audioPlayer.pause();
+        setIsPaused(true);
+      }
+    }
+  };
+
+  const handleSeek = (e) => {
+    let pos = e.pageX - progressBarRef.current.getBoundingClientRect().left;
+    let percent = pos / progressBarRef.current.getBoundingClientRect().width;
+
+    audioRef.current.currentTime = percent * audioRef.current.duration;
+    progressBarRef.current.value = percent / 100;
+  };
+
+  const handleMuteOrUnmute = () => {
+    if (audioRef && audioRef.current) {
+      const audioPlayer = audioRef.current;
+
+      if (audioPlayer.muted) {
+        audioPlayer.muted = false;
+        setIsMuted(false);
+      } else {
+        audioPlayer.muted = true;
+        setIsMuted(true);
+      }
+    }
+  };
+
+  const handleChangeVolume = (e) => {
+    let pos = e.pageX - volumeRef.current.getBoundingClientRect().left;
+    let percent = pos / volumeRef.current.getBoundingClientRect().width;
+    const audioPlayer = audioRef.current;
+
+    audioPlayer.volume = percent;
+    volumeRef.current.value = percent;
+  };
+
+  const handleRestartAudio = () => {
+    if (audioRef && audioRef.current) {
+      const audioPlayer = audioRef.current;
+
+      audioPlayer.currentTime = 0;
+    }
+  };
+
   return (
     <MusicBarContainer>
       <MusicBarBox>
@@ -55,9 +140,17 @@ export default () => {
                 style={{ width: 20, height: 20, color: "#ffffff30" }}
                 className="skipButton"
               />{" "}
-              <IoIosPlayCircle
-                style={{ width: 40, height: 40, color: "#ffffff" }}
-              />{" "}
+              {isPaused ? (
+                <IoIosPlayCircle
+                  onClick={handlePlayPause}
+                  style={{ width: 40, height: 40, color: "#ffffff" }}
+                />
+              ) : (
+                <IoPauseCircle
+                  onClick={handlePlayPause}
+                  style={{ width: 40, height: 40, color: "#ffffff" }}
+                />
+              )}
               <IoIosSkipForward
                 style={{ width: 20, height: 20, color: "#ffffff30" }}
                 className="skipButton"
@@ -65,20 +158,42 @@ export default () => {
             </SkipForwardBackWardAndPlayBox>
 
             <ProgressBarAndTimingBox>
-              <ActualMusicPlayingTime>00:00</ActualMusicPlayingTime>
-              <ActualMusicPlayingTimingBar />
+              <ActualMusicPlayingTime>
+                {currentTimeFormated}
+              </ActualMusicPlayingTime>
+              <ActualMusicPlayingTimingBar
+                ref={progressBarRef}
+                value={audioRawData.currentTime}
+                max={audioRawData.duration}
+                onClick={handleSeek}
+              />
 
-              <ActualMusicPlayingTime>03:20</ActualMusicPlayingTime>
+              <ActualMusicPlayingTime>
+                {durationFormated}
+              </ActualMusicPlayingTime>
             </ProgressBarAndTimingBox>
           </ActualMusicPlayingTimingBox>
 
           <ActualMusicPlayingOptionsContainer>
             <ActualMusicPlayingOptionsVolumeBox>
-              <HiOutlineVolumeUp
-                style={{ width: 22, height: 22, color: "#ffffff60" }}
-              />
+              {isMuted ? (
+                <HiOutlineVolumeOff
+                  onClick={handleMuteOrUnmute}
+                  style={{ width: 22, height: 22, color: "#ffffff60" }}
+                />
+              ) : (
+                <HiOutlineVolumeUp
+                  onClick={handleMuteOrUnmute}
+                  style={{ width: 22, height: 22, color: "#ffffff60" }}
+                />
+              )}
 
-              <ActualMusicPlayingTimingBar />
+              <ActualMusicPlayingTimingBar
+                ref={volumeRef}
+                onClick={handleChangeVolume}
+                value={1.0}
+                max={1.0}
+              />
             </ActualMusicPlayingOptionsVolumeBox>
 
             <ActualMusicPlayingMoreOptionsBox>
@@ -86,12 +201,20 @@ export default () => {
                 style={{ width: 22, height: 22, color: "#ffffff60" }}
               />
               <VscDebugRestart
+                onClick={handleRestartAudio}
                 style={{ width: 20, height: 20, color: "#ffffff60" }}
               />
               <MdFullscreen
                 style={{ width: 22, height: 22, color: "#ffffff60" }}
               />
             </ActualMusicPlayingMoreOptionsBox>
+
+            <Audio
+              onTimeUpdate={handleProgress}
+              className="audio"
+              ref={audioRef}
+              src={luther}
+            />
           </ActualMusicPlayingOptionsContainer>
         </ActualMusicPlayingSpacing>
       </MusicBarBox>

@@ -194,4 +194,9 @@ export const ProgressBarAndTimingBox = styled.div`
   align-items: center;
   width: 100%;
   gap: 0.3rem;
+  min-height: 18px;
+`;
+
+export const Audio = styled.audio`
+  visibility: hidden;
 `;
