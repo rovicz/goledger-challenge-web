@@ -47,7 +47,7 @@ export const ActualMusicPlayingBox = styled.div`
   max-width: 15%;
 
   @media (max-width: 550px) {
-    max-width: 50%;
+    max-width: 45%;
   }
 `;
 
@@ -79,7 +79,7 @@ export const ActualMusicPlayingTimingBox = styled.div`
   width: 40%;
 
   @media (max-width: 550px) {
-    width: 50%;
+    width: 55%;
   }
 `;
 
@@ -185,7 +185,7 @@ export const SkipForwardBackWardAndPlayBox = styled.div`
   }
 
   @media (max-width: 550px) {
-    display: none;
+    display: flex;
   }
 `;
 

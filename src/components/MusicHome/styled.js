@@ -321,6 +321,10 @@ export const MerchandiseSubTitle = styled.p`
 export const MerchandiseArea = styled.div`
   display: flex;
   gap: 1rem;
+
+  @media (max-width: 550px) {
+    height: 80px;
+  }
 `;
 
 export const MerchandiseGoVisitArrowBox = styled.div`
@@ -370,6 +374,8 @@ export const ArtistsSpacingBox = styled.div`
 
   @media (max-width: 550px) {
     height: 420px;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
