@@ -68,3 +68,10 @@ export const BrowseMusicMenuItem = styled.a`
     background: #1e1e1e;
   }
 `;
+
+export const Loading = styled.img`
+  width: 40px;
+  margin-left: 7px;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%)
+    hue-rotate(223deg) brightness(103%) contrast(103%);
+`;

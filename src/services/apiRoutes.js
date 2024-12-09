@@ -39,6 +39,25 @@ export const apiRoutes = {
     );
   },
 
+  getAllPlaylists: async () => {
+    return api.post(
+      "/query/search",
+      {
+        query: {
+          selector: {
+            "@assetType": "playlist",
+          },
+        },
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      },
+    );
+  },
+
   getArtist: async (artist_key) => {
     return api.post(
       "/query/search",

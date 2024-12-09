@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Logo from "../../assets/imgs/goLedger-Logo.svg";
+import loading from "../../assets/imgs/loadingPage.svg";
+
 import {
   IoHomeOutline,
   IoMusicalNoteOutline,
@@ -16,11 +18,31 @@ import {
   BrowseMusicMenuList,
   BrowseMusicMenuTitle,
   HeaderContainer,
+  Loading,
   LogoBox,
   LogoImage,
 } from "./styled";
+import { apiRoutes } from "../../services/apiRoutes";
 
 export default () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [playlists, setPlaylists] = useState([]);
+
+  const getAllPlaylists = async () => {
+    const resPlaylists = await apiRoutes.getAllPlaylists();
+
+    if (resPlaylists.status === 200) {
+      const playlists = resPlaylists.data.result;
+      setPlaylists(playlists);
+      setIsLoaded(true);
+      console.log(resPlaylists.data.result);
+    }
+  };
+
+  useEffect(() => {
+    getAllPlaylists();
+  }, []);
+
   return (
     <HeaderContainer>
       <LogoBox>
@@ -67,15 +89,18 @@ export default () => {
         <BrowseMusicMenuTitle>Your Playlists</BrowseMusicMenuTitle>
 
         <BrowseMusicMenuList>
-          <BrowseMusicMenuItem>
-            <GoDot style={{ width: 20, height: 20, color: "#7BFFFB" }} />
-            Playlist 1
-          </BrowseMusicMenuItem>
+          {!isLoaded && <Loading src={loading} />}
 
-          <BrowseMusicMenuItem>
-            <GoDot style={{ width: 20, height: 20, color: "#7BFFFB" }} />
-            Playlist 2
-          </BrowseMusicMenuItem>
+          {isLoaded && (
+            <>
+              {playlists.map((item) => (
+                <BrowseMusicMenuItem key={item["@key"]}>
+                  <GoDot style={{ width: 20, height: 20, color: "#7BFFFB" }} />
+                  {item?.name}
+                </BrowseMusicMenuItem>
+              ))}
+            </>
+          )}
         </BrowseMusicMenuList>
       </BrowseMusicMenuBox>
     </HeaderContainer>
